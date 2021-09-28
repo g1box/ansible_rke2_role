@@ -6,4 +6,4 @@
     name: "rke2-{{ RKE2_INSTALL_VALUES.INSTALL_RKE2_TYPE }}.service"
     state: started
     enabled: true
-    daemon-reload: yes
+    daemon-reload: true
