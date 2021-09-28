@@ -3,7 +3,7 @@
 - name: Prerequierments
   include_tasks: prerequirements_rke2.yaml
 
-- name: set Containerd proxy if needed                                                                                                                                       
+- name: set Containerd proxy if needed
   include_tasks: containerdProxy.yaml
   when: set_proxy == true
 
@@ -23,71 +23,71 @@
     state: directory
 
 - block:
-  - block:
-      - name: set RKE2 config.yaml
-        ansible.builtin.template:
-          src: first-server-config.yaml
-          dest: /etc/rancher/rke2/config.yaml
-          user: root
-          group: root
-          mode: '0644'
+    - block:
+        - name: set RKE2 config.yaml
+          ansible.builtin.template:
+            src: first-server-config.yaml
+            dest: /etc/rancher/rke2/config.yaml
+            user: root
+            group: root
+            mode: '0644'
 
-      - name: start RKE2 first server node
-        ansible.builtin.systemd:
-          name: rke2-server.service
-          state: started
-          enabled: true
+        - name: start RKE2 first server node
+          ansible.builtin.systemd:
+            name: rke2-server.service
+            state: started
+            enabled: true
 
-      - name: register cluster join token
-        ansible.builtin.command: cat /var/lib/rancher/rke2/server/node-token
-        register: cluster_token
+        - name: register cluster join token
+          ansible.builtin.command: cat /var/lib/rancher/rke2/server/node-token
+          register: cluster_token
 
-      - name: store cluster join token localy
-        local_action: copy content="{{ cluster_token.stdout_lines[0] }}" dest="./cluster-token"
+        - name: store cluster join token localy
+          local_action: copy content="{{ cluster_token.stdout_lines[0] }}" dest="./cluster-token"
 
-      - name: register kubeconfig
-        ansible.builtin.command: cat /etc/rancher/rke2/rke2.yaml
-        register: kube_config
+        - name: register kubeconfig
+          ansible.builtin.command: cat /etc/rancher/rke2/rke2.yaml
+          register: kube_config
 
-      - name: store kubeconfig localy
-        local_action: copy content="{{ kube_config.stdout_lines }}" dest="./kubeconfig"
+        - name: store kubeconfig localy
+          local_action: copy content="{{ kube_config.stdout_lines }}" dest="./kubeconfig"
 
-    when: first_server_node == true
+      when: first_server_node == true
 
-  - block:
-      - name: set RKE2 config.yaml
-        ansible.builtin.template:
-          src: server-join-config.yaml
-          dest: /etc/rancher/rke2/config.yaml
-          user: root
-          group: root
-          mode: '0644'
+    - block:
+        - name: set RKE2 config.yaml
+          ansible.builtin.template:
+            src: server-join-config.yaml
+            dest: /etc/rancher/rke2/config.yaml
+            user: root
+            group: root
+            mode: '0644'
 
-      - name: start RKE2 server on node
-        ansible.builtin.template:
-          name: rke2-server.service
-          state: started
-          enabled: true
+        - name: start RKE2 server on node
+          ansible.builtin.template:
+            name: rke2-server.service
+            state: started
+            enabled: true
 
-    when: 
-      - first_server_node == false
-      - cluster_token.stat.exists
+      when:
+        - first_server_node == false
+        - cluster_token.stat.exists
   when: RKE2_INSTALL_VALUES.INSTALL_RKE2_TYPE == "server"
 
 - block:
-  - name: set RKE2 config.yaml
-    ansible.builtin.template:
-      src: agent-join-config.yaml
-      dest: /etc/rancher/rke2/config.yaml
-      owner: root
-      group: root
-      mode: '0644'
+    - name: set RKE2 config.yaml
+      ansible.builtin.template:
+        src: agent-join-config.yaml
+        dest: /etc/rancher/rke2/config.yaml
+        owner: root
+        group: root
+        mode: '0644'
 
-  - name: start RKE2 agent on node
-    ansible.builtin.systemd:
-      name: rke2-agent.service
-      state: started
-      enabled: true
+    - name: start RKE2 agent on node
+      ansible.builtin.systemd:
+        name: rke2-agent.service
+        state: started
+        enabled: true
 
   when:
     - RKE2_INSTALL_VALUES.INSTALL_RKE2_TYPE == "agent"
