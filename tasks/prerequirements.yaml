@@ -1,0 +1,9 @@
+## Prerequirements for RKE2
+---
+- name: APT Packages
+  become: true
+  apt:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - curl

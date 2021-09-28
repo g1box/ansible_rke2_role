@@ -1,0 +1,19 @@
+## RKE2 script basic values
+RKE2_INSTALL_VALUES:
+  INSTALL_RKE2_TYPE: agent
+  INSTALL_RKE2_VERSION: stable
+  INSTALL_RKE2_CHANNEL_URL: https://update.rke2.io/v1-release/channels
+  INSTALL_RKE2_CHANNEL: stable
+  INSTALL_RKE2_METHOD: tar
+## proxy values
+set_proxy: false
+proxy:
+  http_proxy: ""
+  https_proxy: ""
+  no_proxy: ""
+## RKE2 config common values
+RKE2_CONFIG:
+  write-kubeconfig-mode: '0644'
+  disable:
+    - rke2-ingress-nginx
+    - rke2-metrics-server

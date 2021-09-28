@@ -1,0 +1,2 @@
+write-kubeconfig-mode: "{{ RKE2_CONFIG.write-kubeconfig-mode }}"
+disable: "{{ RKE2_CONFIG.disable }}"

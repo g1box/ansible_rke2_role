@@ -1,0 +1,48 @@
+---
+argument_specs:
+  role_name: ansible_rke2_role
+  author:
+    - g1box
+  description: "ansible role for rke2 setup script"
+  min_ansible_verison: 2.4
+
+  platforms:
+    - name: Debian
+      versions:
+        - bullseye
+        - buster
+
+  main:
+    short_description: "main entrypoint for whole cluster setup"
+    options:
+      RKE2_INSTALL_VALUES:
+        type: 'dict'
+        options:
+          INSTALL_RKE2_TYPE:
+            type: 'str'
+          INSTALL_RKE2_VERSION:
+            type: 'str'
+          INSTALL_RKE2_CHANNLER_URL:
+            type: 'str'
+          INSTALL_RKE2_CHANNEL:
+            type: 'str'
+          INSTALL_RKE2_METHOD:
+            type: 'str'
+      set_proxy:
+        type: 'bool'
+      proxy:
+        type: 'dict'
+        options:
+          http_proxy:
+            type: 'str'
+          https_proxy:
+            type: 'str'
+          no_proxy:
+            type: 'str'
+      RKE2_CONFIG:
+        type: 'dict'
+        options:
+          write-kubeconfig-mode:
+            type: 'str'
+          disbale:
+            type: 'str'
