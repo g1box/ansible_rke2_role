@@ -1,2 +1,3 @@
+---
 server: "{{ first_server_rke2_api }}"
 token: "{{ cluster_token.stdout_lines[0] }}"
