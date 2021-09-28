@@ -15,6 +15,8 @@ argument_specs:
   main:
     short_description: "main entrypoint for whole cluster setup"
     options:
+      first_server_node:
+        type: 'bool'
       RKE2_INSTALL_VALUES:
         type: 'dict'
         options:

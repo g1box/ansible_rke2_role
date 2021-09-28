@@ -46,7 +46,7 @@
         local_action: copy content="{{ cluster_token.stdout_lines[0] }}" dest="./cluster-token"
 
       - name: register kubeconfig
-        ansible.builtin.command:
+        ansible.builtin.command: cat /etc/rancher/rke2/rke2.yaml
         register: kube_config
 
       - name: store kubeconfig localy

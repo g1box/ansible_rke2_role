@@ -1,3 +1,6 @@
+---
+## is first server node ?
+first_server_node: false
 ## RKE2 script basic values
 RKE2_INSTALL_VALUES:
   INSTALL_RKE2_TYPE: agent
