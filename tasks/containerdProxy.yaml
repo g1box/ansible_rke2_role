@@ -1,13 +1,13 @@
 ---
 - name: Ensure that directory exists
   ansible:builtin.file:
-    path: "/etc/systemd/system/rke2-{{ RKE2_INSTALL_VALUES.INSTALL_RKE2_TYPE }}.service.d"
+    path: "/etc/systemd/system/rke2-{{ INSTALL_RKE2_TYPE }}.service.d"
     state: directory
 
 - name: set Containerd proxy as needed
   ansible.builtin.template:
     src: containerd-rke2-http-proxy.conf
-    dest: "/etc/systemd/system/rke2-{{ RKE2_INSTALL_VALUES.INSTALL_RKE2_TYPE }}.service.d/containerd-rke2-http-proxy.conf"
+    dest: "/etc/systemd/system/rke2-{{ INSTALL_RKE2_TYPE }}.service.d/containerd-rke2-http-proxy.conf"
     owner: root
     group: root
     mode: '0644'
