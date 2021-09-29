@@ -8,7 +8,7 @@
   when: set_proxy == true
 
 - name: RKE2 Script
-  ansible.builtin.command: >
+  ansible.builtin.raw: >
     "curl -sfL https://get.rke2.io |
     INSTALL_RKE2_TYPE={{ INSTALL_RKE2_TYPE }}
     INSTALL_RKE2_VERSION={{ INSTALL_RKE2_VERSION }}
