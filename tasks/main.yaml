@@ -1,7 +1,7 @@
 ## Main Tasks Entrypoint
 ---
 - name: Prerequierments
-  include_tasks: prerequirements_rke2.yaml
+  include_tasks: prerequirements.yaml
 
 - name: set Containerd proxy if needed
   include_tasks: containerdProxy.yaml
