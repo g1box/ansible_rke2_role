@@ -1,6 +1,6 @@
 ---
 - name: Ensure that directory exists
-  ansible:builtin.file:
+  ansible.builtin.file:
     path: "/etc/systemd/system/rke2-{{ INSTALL_RKE2_TYPE }}.service.d"
     state: directory
 
