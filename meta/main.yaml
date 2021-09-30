@@ -41,7 +41,7 @@ argument_specs:
       RKE2_CONFIG:
         type: 'dict'
         options:
-          write-kubeconfig-mode:
+          write_kubeconfig_mode:
             type: 'str'
           disable:
             type: 'str'
