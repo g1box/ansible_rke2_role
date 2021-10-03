@@ -86,7 +86,7 @@
 
     - name: start RKE2 server on node
       become: true
-      ansible.builtin.template:
+      ansible.builtin.systemd:
         name: rke2-server.service
         state: started
         enabled: true
