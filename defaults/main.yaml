@@ -4,7 +4,7 @@ first_server_node: false
 first_server_rke2_api: "http://10.0.0.1:9345/"
 ## RKE2 script basic values
 INSTALL_RKE2_TYPE: agent
-INSTALL_RKE2_VERSION: stable
+INSTALL_RKE2_VERSION: "v1.21.5+rke2r1"
 INSTALL_RKE2_CHANNEL_URL: https://update.rke2.io/v1-release/channels
 INSTALL_RKE2_CHANNEL: stable
 INSTALL_RKE2_METHOD: tar
