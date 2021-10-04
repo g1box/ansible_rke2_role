@@ -45,3 +45,11 @@ argument_specs:
             type: 'str'
           disable:
             type: 'str'
+          node-ip:
+            type: 'str'
+          tls-san:
+            type: 'str'
+          cluster-cidr:
+            type: 'str'
+          service-cidr:
+            type: 'str'
