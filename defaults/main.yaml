@@ -20,7 +20,7 @@ RKE2_CONFIG:
   disable:
     - "rke2-ingress-nginx"
     - "rke2-metrics-server"
-  node-ip: "{{ RKE2_CONFIG.node_ip }}"
+  node-ip: "{{ ansible_default_ipv4 }}"
   tls-san: "{{ inventory_hostname }}"
   cluster-cidr: "10.42.0.0/16"
   service-cidr: "10.43.0.0/16"
