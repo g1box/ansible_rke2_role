@@ -43,7 +43,7 @@
       register: cluster_token_store
 
     - name: store cluster join token localy
-      local_action: copy content="{{ cluster_token_store.stdout_lines[0] }}" dest="./cluster-token"
+      local_action: copy content="{{ cluster_token_store.stdout_lines[0] }}" dest="/tmp/cluster-token"
   
     - name: register kubeconfig
       become: true
@@ -59,7 +59,7 @@
 - name: copy token to nodes
   become: true
   ansible.builtin.copy:
-    src: cluster-token
+    src: /tmp/cluster-token
     dest: /tmp/cluster-token
     owner: root
     group: root
