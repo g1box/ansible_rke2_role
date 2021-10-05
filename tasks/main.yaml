@@ -51,7 +51,7 @@
       register: kube_config
 
     - name: store kubeconfig localy
-      local_action: copy content="/etc/rancher/rke2/rke2.yaml" dest="./kubeconfig" force="true"
+      local_action: copy remote_src="/etc/rancher/rke2/rke2.yaml" dest="./kubeconfig" force="true"
   when:
   - first_server_node
   - INSTALL_RKE2_TYPE == "server"
