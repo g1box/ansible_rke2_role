@@ -51,7 +51,9 @@
       register: kube_config
 
     - name: store kubeconfig localy
-      local_action: copy src="/etc/rancher/rke2/rke2.yaml" dest="./kubeconfig" force="true"
+      ansible.builtin.fetch:
+        src: "/etc/rancher/rke2/rke2.yaml"
+        dest: "./kubeconfig"
   when:
   - first_server_node
   - INSTALL_RKE2_TYPE == "server"
