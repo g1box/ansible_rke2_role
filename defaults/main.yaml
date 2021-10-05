@@ -15,12 +15,11 @@ proxy:
   https_proxy: ""
   no_proxy: ""
 ## RKE2 config common values
-RKE2_CONFIG:
-  write_kubeconfig_mode: '0644'
-  disable:
-    - "rke2-ingress-nginx"
-    - "rke2-metrics-server"
-  node_ip: "{{ ansible_default_ipv4.address }}"
-  tls_san: "{{ inventory_hostname }}"
-  cluster_cidr: "10.42.0.0/16"
-  service_cidr: "10.43.0.0/16"
+write_kubeconfig_mode: '0644'
+disable:
+  - "rke2-ingress-nginx"
+  - "rke2-metrics-server"
+node_ip: "{{ ansible_default_ipv4.address }}"
+tls_san: "{{ inventory_hostname }}"
+cluster_cidr: "10.42.0.0/16"
+service_cidr: "10.43.0.0/16"
