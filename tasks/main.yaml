@@ -43,7 +43,7 @@
       register: cluster_token_store
 
     - name: store cluster join token localy
-      local_action: copy content="{{ cluster_token_store.stdout_lines[0] }}" dest="/tmp/cluster-token"
+      local_action: copy content="{{ cluster_token_store.stdout_lines[0] }}" dest="/tmp/cluster-token" force="true"
   
     - name: register kubeconfig
       become: true
@@ -51,7 +51,7 @@
       register: kube_config
 
     - name: store kubeconfig localy
-      local_action: copy content="{{ kube_config.stdout_lines | to_nice_yaml }}" dest="./kubeconfig"
+      local_action: copy content="/etc/rancher/rke2/rke2.yaml" dest="./kubeconfig" force="true"
   when:
   - first_server_node
   - INSTALL_RKE2_TYPE == "server"
