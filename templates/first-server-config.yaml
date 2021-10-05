@@ -5,6 +5,9 @@ disable:
   - {{ result }}
 {% endfor %}
 node-ip: "{{ node_ip }}"
-tls-san: "{{ tls_san | to_nice_yaml }}"
+tls-san:
+{% for san in tls_san %}
+  - {{ san }}
+{% endfor %}
 cluster-cidr: "{{ cluster_cidr }}"
 service-cidr: "{{ service_cidr }}"
