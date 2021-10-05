@@ -43,7 +43,7 @@ argument_specs:
       disable:
         type: 'list'
       node_ip:
-        type: 'st'
+        type: 'str'
       tls_san:
         type: 'list'
       cluster_cidr:
