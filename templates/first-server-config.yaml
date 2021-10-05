@@ -1,6 +1,9 @@
 ---
 write-kubeconfig-mode: "{{ write_kubeconfig_mode }}"
-disable: "{{ disable | to_nice_yaml }}"
+disable:
+{% for result in disable %}
+  - {{ result }}
+{% endfor %}
 node-ip: "{{ node_ip }}"
 tls-san: "{{ tls_san | to_nice_yaml }}"
 cluster-cidr: "{{ cluster_cidr }}"
