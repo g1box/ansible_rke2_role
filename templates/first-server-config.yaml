@@ -1,7 +1,7 @@
 ---
 write-kubeconfig-mode: "{{ write_kubeconfig_mode }}"
-disable: "{{ disable }}"
+disable: "{{ disable | to_nice_yaml }}"
 node-ip: "{{ node_ip }}"
-tls-san: "{{ tls_san }}"
+tls-san: "{{ tls_san | to_nice_yaml }}"
 cluster-cidr: "{{ cluster_cidr }}"
 service-cidr: "{{ service_cidr }}"
