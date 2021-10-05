@@ -1,7 +1,7 @@
 ---
 write-kubeconfig-mode: "{{ RKE2_CONFIG.write_kubeconfig_mode }}"
-disable: "{{ RKE2_CONFIG.disable | to_yaml }}"
+disable: "{{ RKE2_CONFIG.disable }}"
 node-ip: "{{ RKE2_CONFIG.node_ip }}"
-tls-san: "{{ RKE2_CONFIG.tls_san | to_yaml }}"
+tls-san: "{{ RKE2_CONFIG.tls_san }}"
 cluster-cidr: "{{ RKE2_CONFIG.cluster_cidr }}"
 service-cidr: "{{ RKE2_CONFIG.service_cidr }}"
