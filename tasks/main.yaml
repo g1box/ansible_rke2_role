@@ -51,7 +51,7 @@
       register: kube_config
 
     - name: store kubeconfig localy
-      local_action: copy content="{{ kube_config.stdout_lines | to_yaml }}" dest="./kubeconfig"
+      local_action: copy content="{{ kube_config.stdout_lines | to_nice_yaml }}" dest="./kubeconfig"
   when:
   - first_server_node
   - INSTALL_RKE2_TYPE == "server"
